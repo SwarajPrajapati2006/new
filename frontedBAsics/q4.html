@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .num{
+        font-size: 1px;
+    }
+    .plus, .minus{
+        cursor: pointer;
+    }
+</style>
+<body>
+
+    <p class="num">click me</p>
+    <button class="plus">+</button>
+    <button class="minus">-</button>
+
+    <script>
+        const num = document.querySelector(".num");
+        const plus = document.querySelector(".plus");
+        const minus = document.querySelector(".minus");
+
+        let saved = localStorage.getItem("fontSize");
+        let size;
+
+        if (saved) {
+            size = parseInt(saved);
+        } else {
+            size = 1;
+        }
+
+        num.style.fontSize = size + "px";
+
+        plus.addEventListener("click", () => {
+            size++;
+            num.style.fontSize = size + "px";
+            localStorage.setItem("fontSize", size + "px");
+        });
+
+        minus.addEventListener("click", () => {
+            size--;
+            num.style.fontSize = size + "px";
+            localStorage.setItem("fontSize", size + "px");
+        });
+    </script>
+
+</body>
+</html>
+ 
